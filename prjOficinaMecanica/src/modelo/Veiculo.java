@@ -8,8 +8,7 @@ public class Veiculo {
 	String modelo;
 	Cliente proprietario;
 	Set<OrdemDeServico> ordemDeServicos;
-	
-	
+
 	public Veiculo(String placa, String modelo) {
 		super();
 		this.placa = placa;
@@ -40,14 +39,25 @@ public class Veiculo {
 		this.proprietario = proprietario;
 	}
 
+	public void addOrdemServico(OrdemDeServico novaOS) {
+		if (this.ordemDeServicos.contains(novaOS))
+			return;
+		this.ordemDeServicos.add(novaOS);
+		novaOS.setVeiculo(this);
+	}
+
+	public void removeOrdemServico(OrdemDeServico oS) {
+		if (!this.ordemDeServicos.contains(oS))
+			return;
+		this.ordemDeServicos.remove(oS);
+		oS.setVeiculo(null);
+
+	}
+
 	@Override
 	public String toString() {
-		return "Veiculo [placa=" + placa + ", modelo=" + modelo
-				+ ", proprietario=" + proprietario + ", ordemDeServicos="
-				+ ordemDeServicos + "]";
+		return "Veiculo [placa=" + placa + ", modelo=" + modelo + ", proprietario=" + proprietario
+				+ ", ordemDeServicos=" + ordemDeServicos + "]";
 	}
-	
-	
-	
-	
+
 }

@@ -35,10 +35,7 @@ public class TipoDeServico {
 		this.valor = valor;
 	}
 
-	public void setOrdemDeServicos(OrdemDeServico os) {
-		this.ordemDeServicos = ordemDeServicos;
-	}
-
+	
 	public TipoDeServico(String descricao, double valor,
 			Set<OrdemDeServico> ordemDeServicos) {
 		super();
@@ -51,8 +48,19 @@ public class TipoDeServico {
 		return ordemDeServicos;
 	}
 
-	public void setOrdemDeServicos(Set<OrdemDeServico> ordemDeServicos) {
-		this.ordemDeServicos = ordemDeServicos;
+	public void addOrdemServico(OrdemDeServico novaOS) {
+		if (this.ordemDeServicos.contains(novaOS))
+			return;
+		this.ordemDeServicos.add(novaOS);
+		novaOS.addTipoServico(this);
+	}
+	
+	public void removeOrdemServico(OrdemDeServico oS){
+		if (! this.ordemDeServicos.contains(oS))
+			return;
+		this.ordemDeServicos.remove(oS);
+		oS.removeTipoServico(this);
+		
 	}
 
 	@Override

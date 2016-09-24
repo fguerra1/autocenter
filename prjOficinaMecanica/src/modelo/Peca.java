@@ -6,18 +6,17 @@ public class Peca {
 
 	String nome;
 	String descricao;
-	Servico servico;
 	Set<Servico> servicos;
-	
-	public Peca(String nome, String descricao, Servico servico) {
+
+	public Peca(String nome, String descricao) {
 		super();
 		this.nome = nome;
 		this.descricao = descricao;
-		this.servico = servico;
+
 	}
-	
-	public Peca () {
-		
+
+	public Peca() {
+
 	}
 
 	public String getNome() {
@@ -36,21 +35,24 @@ public class Peca {
 		this.descricao = descricao;
 	}
 
-	public Servico getServico() {
-		return servico;
+	public void addServico(Servico servico) {
+		if (this.servicos.contains(servico))
+			return;
+		this.servicos.add(servico);
+		servico.addPeca(this);
 	}
 
-	public void setServico(Servico servico) {
-		this.servico = servico;
+	public void removeServico(Servico servico) {
+		if (!this.servicos.contains(servico))
+			return;
+		this.servicos.remove(servico);
+		servico.removePeca(this);
+
 	}
 
 	@Override
 	public String toString() {
-		return "Peca [nome=" + nome + ", descricao=" + descricao + ", servico="
-				+ servico + "]";
+		return "Peca [nome=" + nome + ", descricao=" + descricao + ", servicos=" + servicos + "]";
 	}
-	
-	
-	
-	
+
 }
