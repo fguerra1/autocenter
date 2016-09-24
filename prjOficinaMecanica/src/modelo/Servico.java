@@ -2,6 +2,7 @@ package modelo;
 
 import java.util.Date;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Servico {
 
@@ -11,12 +12,13 @@ public class Servico {
 	Set<Funcionario> funcionario;
 	Set<Peca> pecas;
 
-	public Servico(float preco, int quantidade, Date perido, Set<Peca> pecas) {
+	public Servico(float preco, int quantidade, Date perido) {
 		super();
-		this.preco = preco;
-		this.quantidade = quantidade;
-		this.periodo = perido;
-		this.pecas = pecas;
+		this.setPreco(preco);
+		this.setQuantidade(quantidade);
+		this.setPeriodo(perido);
+		this.funcionario = new TreeSet<Funcionario>();
+		this.pecas = new TreeSet<Peca>();
 	}
 
 	public float getPreco() {

@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Veiculo {
 
@@ -11,8 +12,10 @@ public class Veiculo {
 
 	public Veiculo(String placa, String modelo) {
 		super();
-		this.placa = placa;
-		this.modelo = modelo;
+		this.setPlaca(placa);
+		this.setModelo(modelo);
+		this.ordemDeServicos = new TreeSet<OrdemDeServico>();
+		this.proprietario = new Cliente();
 	}
 
 	public String getPlaca() {
@@ -35,8 +38,18 @@ public class Veiculo {
 		return proprietario;
 	}
 
-	public void setProprietario(Cliente proprietario) {
-		this.proprietario = proprietario;
+	public void setProprietario(Cliente cliente) {
+		if (this.proprietario == cliente)
+			return;
+		if (cliente == null) {
+			Cliente antigo = this.proprietario;
+			cliente.removeVeiculo(this);
+		} else {
+			if (this.proprietario != null)
+				this.proprietario.removeVeiculo(this);
+			    this.proprietario = proprietario;
+			    cliente.addVeiculos(this);
+		}
 	}
 
 	public void addOrdemServico(OrdemDeServico novaOS) {

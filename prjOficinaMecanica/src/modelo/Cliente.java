@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Cliente extends Pessoa {
 	
@@ -9,12 +10,14 @@ public class Cliente extends Pessoa {
 
 	public Cliente() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Cliente(String nome, String cpf) {
 		super(nome, cpf);
-		// TODO Auto-generated constructor stub
+		this.veiculos = new TreeSet<Veiculo>();
+		this.ordemServicos = new TreeSet<OrdemDeServico>();
+		
 	}
 
 	public Set<Veiculo> getVeiculos() {

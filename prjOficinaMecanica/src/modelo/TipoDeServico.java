@@ -1,22 +1,23 @@
 package modelo;
 
 import java.util.Set;
+import java.util.TreeSet;
 
 public class TipoDeServico {
-	
+
 	String descricao;
 	double valor;
 	Set<OrdemDeServico> ordemDeServicos;
-	
-	public TipoDeServico(String descricao, double valor, OrdemDeServico os) {
+
+	public TipoDeServico(String descricao, double valor) {
 		super();
-		this.descricao = descricao;
-		this.valor = valor;
-		this.ordemDeServicos = ordemDeServicos;
+		this.setDescricao(descricao);
+		this.setValor(valor);
+		this.ordemDeServicos = new TreeSet<OrdemDeServico>();
 	}
-	
+
 	public TipoDeServico() {
-		
+
 	}
 
 	public String getDescricao() {
@@ -35,17 +36,11 @@ public class TipoDeServico {
 		this.valor = valor;
 	}
 
-	
-	public TipoDeServico(String descricao, double valor,
-			Set<OrdemDeServico> ordemDeServicos) {
+	public TipoDeServico(String descricao, double valor, Set<OrdemDeServico> ordemDeServicos) {
 		super();
 		this.descricao = descricao;
 		this.valor = valor;
 		this.ordemDeServicos = ordemDeServicos;
-	}
-
-	public Set<OrdemDeServico> getOrdemDeServicos() {
-		return ordemDeServicos;
 	}
 
 	public void addOrdemServico(OrdemDeServico novaOS) {
@@ -54,23 +49,18 @@ public class TipoDeServico {
 		this.ordemDeServicos.add(novaOS);
 		novaOS.addTipoServico(this);
 	}
-	
-	public void removeOrdemServico(OrdemDeServico oS){
-		if (! this.ordemDeServicos.contains(oS))
+
+	public void removeOrdemServico(OrdemDeServico oS) {
+		if (!this.ordemDeServicos.contains(oS))
 			return;
 		this.ordemDeServicos.remove(oS);
 		oS.removeTipoServico(this);
-		
+
 	}
 
 	@Override
 	public String toString() {
-		return "TipoDeServico [descricao=" + descricao + ", valor=" + valor
-				+ ", os=" + ordemDeServicos + "]";
+		return "TipoDeServico [descricao=" + descricao + ", valor=" + valor + ", os=" + ordemDeServicos + "]";
 	}
-	
-	
-	
-	
 
 }

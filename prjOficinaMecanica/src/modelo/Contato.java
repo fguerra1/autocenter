@@ -6,11 +6,11 @@ public class Contato {
 	String email;
 	Pessoa pessoa;
 
-	public Contato(String telefone, String email, Pessoa pessoa) {
+	public Contato(String telefone, String email) {
 		super();
-		this.telefone = telefone;
-		this.email = email;
-		this.setPessoa(pessoa);
+		this.setTelefone(telefone);
+		this.setEmail(email);
+		this.pessoa = new Pessoa();
 	}
 
 	public Contato() {
@@ -34,7 +34,17 @@ public class Contato {
 	}
 
 	public void setPessoa(Pessoa pessoa) {
-
+		if (this.pessoa == pessoa)
+			return;
+		if (pessoa == null) {
+			Pessoa antigo = this.pessoa;
+			pessoa.removeContato(this);
+		} else {
+			if (this.pessoa != null)
+				this.pessoa.removeContato(this);
+			this.pessoa = pessoa;
+			pessoa.addContato(this);
+		}
 	}
 
 	public void setEmail(String email) {

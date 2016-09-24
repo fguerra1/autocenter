@@ -2,23 +2,24 @@ package modelo;
 
 import java.util.Date;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class OrdemDeServico {
 
 	Date dataDeServico;
 	Date dataFim;
 	String descricao;
-	Set<TipoDeServico> tipoServicos;
 	Funcionario funcionario;
 	Cliente cliente;
 	Veiculo veiculo;
+	Set<TipoDeServico> tipoServicos;
 
-	public OrdemDeServico(Date dataDeServico, Date dataFim, String descricao, TipoDeServico tipoServico) {
+	public OrdemDeServico(Date dataDeServico, Date dataFim, String descricao) {
 		super();
-		this.dataDeServico = dataDeServico;
-		this.dataFim = dataFim;
-		this.descricao = descricao;
-		this.tipoServicos = tipoServicos;
+		this.setDataDeServico(dataDeServico);
+		this.setDataFim(dataFim);
+		this.setDescricao(descricao);
+		this.tipoServicos = new TreeSet<TipoDeServico>();
 	}
 
 

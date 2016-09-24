@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Peca {
 
@@ -10,8 +11,9 @@ public class Peca {
 
 	public Peca(String nome, String descricao) {
 		super();
-		this.nome = nome;
-		this.descricao = descricao;
+		this.setNome(nome);
+		this.setDescricao(descricao);
+		this.servicos = new TreeSet<Servico>();
 
 	}
 

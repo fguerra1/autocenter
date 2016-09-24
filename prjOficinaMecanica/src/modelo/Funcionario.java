@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Funcionario extends Pessoa {
 
@@ -11,8 +12,11 @@ public class Funcionario extends Pessoa {
 
 	public Funcionario(String nome, String cpf, int matricula, String funcao) {
 		super(nome, cpf);
-		this.matricula = matricula;// colocar metodo set (ver prjMVC)
-		this.funcao = funcao;
+		this.setMatricula(matricula);
+		this.setFuncao(funcao);
+		this.nomeServico = new TreeSet<Servico>();
+		this.ordemDeServicos = new TreeSet<OrdemDeServico>();
+		
 	}
 
 	public int getMatricula() {
