@@ -14,7 +14,7 @@ public class OrdemDeServico {
 	Veiculo veiculo;
 	Set<TipoDeServico> tipoServicos;
 
-	public OrdemDeServico(Date dataDeServico, Date dataFim, String descricao) {
+	public OrdemDeServico(Date dataDeServico, Date dataFim, String descricao)throws DadosException {
 		super();
 		this.setDataDeServico(dataDeServico);
 		this.setDataFim(dataFim);
@@ -46,7 +46,8 @@ public class OrdemDeServico {
 		return dataDeServico;
 	}
 
-	public void setDataDeServico(Date dataDeServico) {
+	public void setDataDeServico(Date dataDeServico) throws DadosException {
+		OrdemDeServico.validarDataServico(dataDeServico);
 		this.dataDeServico = dataDeServico;
 	}
 
@@ -54,7 +55,8 @@ public class OrdemDeServico {
 		return dataFim;
 	}
 
-	public void setDataFim(Date dataFim) {
+	public void setDataFim(Date dataFim) throws DadosException{
+		OrdemDeServico.validarDataFim(dataFim);
 		this.dataFim = dataFim;
 	}
 
@@ -62,7 +64,8 @@ public class OrdemDeServico {
 		return descricao;
 	}
 
-	public void setDescricao(String descricao) {
+	public void setDescricao(String descricao)throws DadosException {
+		OrdemDeServico.validarDataFim(dataFim);
 		this.descricao = descricao;
 	}
 	
@@ -135,5 +138,18 @@ public class OrdemDeServico {
 				+ tipoServicos + "]";
 	}
 	
+	public static void validarDataServico (Date dataDeServico) throws DadosException{
+		if(dataDeServico == null)
+			throw new DadosException(new ErroDeDominio(3, "A data não pode ser nula!", OrdemDeServico.class));	
+	}
 
+	public static void validarDataFim (Date dataFim) throws DadosException{
+		if(dataFim == null)
+			throw new DadosException(new ErroDeDominio(4, "A data não pode ser nula!", OrdemDeServico.class));	
+	}
+	
+	public static void validarDescricao (String descricao) throws DadosException{
+		if(descricao == null || descricao.length()==0)
+			throw new DadosException(new ErroDeDominio(5, "A descrição não pode ser nula!", OrdemDeServico.class));	
+	}
 }

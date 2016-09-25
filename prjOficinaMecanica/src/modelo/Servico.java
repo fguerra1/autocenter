@@ -12,7 +12,7 @@ public class Servico {
 	Set<Funcionario> funcionario;
 	Set<Peca> pecas;
 
-	public Servico(float preco, int quantidade, Date perido) {
+	public Servico(float preco, int quantidade, Date perido)throws DadosException {
 		super();
 		this.setPreco(preco);
 		this.setQuantidade(quantidade);
@@ -25,7 +25,8 @@ public class Servico {
 		return preco;
 	}
 
-	public void setPreco(float preco) {
+	public void setPreco(float preco) throws DadosException{
+		Servico.validarPreco(preco);
 		this.preco = preco;
 	}
 
@@ -37,7 +38,8 @@ public class Servico {
 		return pecas;
 	}
 
-	public void setQuantidade(int quantidade) {
+	public void setQuantidade(int quantidade)throws DadosException {
+		Servico.validarQuantidade(quantidade);
 		this.quantidade = quantidade;
 	}
 
@@ -49,7 +51,8 @@ public class Servico {
 		return periodo;
 	}
 
-	public void setPeriodo(Date periodo) {
+	public void setPeriodo(Date periodo) throws DadosException {
+		Servico.validarPeriodo(periodo);
 		this.periodo = periodo;
 	}
 
@@ -89,4 +92,17 @@ public class Servico {
 				+ funcionario + ", pecas=" + pecas + "]";
 	}
 
+	public static void validarPreco(float preco) throws DadosException {
+		if(preco == 0)
+			throw new DadosException(new ErroDeDominio(10, "O preço não pode ser nulo!", Servico.class));	
+}
+	public static void validarQuantidade(int quantidade) throws DadosException {
+		if(quantidade == 0)
+			throw new DadosException(new ErroDeDominio(11, "A quantidde não pode ser nula!", Servico.class));	
+}
+	
+	public static void validarPeriodo(Date periodo) throws DadosException {
+		if(periodo == null)
+			throw new DadosException(new ErroDeDominio(12, "A data não pode ser nula!", Servico.class));	
+}
 }
