@@ -6,7 +6,7 @@ public class Contato {
 	String email;
 	Pessoa pessoa;
 
-	public Contato(String telefone, String email) {
+	public Contato(String telefone, String email) throws DadosException {
 		super();
 		this.setTelefone(telefone);
 		this.setEmail(email);
@@ -21,7 +21,8 @@ public class Contato {
 		return telefone;
 	}
 
-	public void setTelefone(String telefone) {
+	public void setTelefone(String telefone)throws DadosException {
+		Contato.validarTelefone(telefone);
 		this.telefone = telefone;
 	}
 
@@ -47,7 +48,8 @@ public class Contato {
 		}
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(String email) throws DadosException{
+		Contato.validarEmail(email);
 		this.email = email;
 	}
 
@@ -56,4 +58,16 @@ public class Contato {
 		return "Contato [telefone=" + telefone + ", email=" + email + ", pessoa=" + pessoa + "]";
 	}
 
-} 
+	
+	public static void validarTelefone(String telefone) throws DadosException {
+		if (telefone.length() < 8)
+			throw new DadosException(new ErroDeDominio(8, "O telefone está no formato incorreto!", Contato.class));
+		if (telefone==null || telefone.length() == 0)
+			throw new DadosException(new ErroDeDominio(9, "O telefone não pode ser nulo!", Contato.class));
+}
+	public static void validarEmail(String email) throws DadosException{
+		
+	}
+}
+
+
