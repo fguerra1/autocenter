@@ -56,4 +56,4 @@ public class Contato {
 		return "Contato [telefone=" + telefone + ", email=" + email + ", pessoa=" + pessoa + "]";
 	}
 
-}
+} 
