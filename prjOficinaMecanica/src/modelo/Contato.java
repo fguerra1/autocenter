@@ -66,7 +66,8 @@ public class Contato {
 			throw new DadosException(new ErroDeDominio(9, "O telefone não pode ser nulo!", Contato.class));
 }
 	public static void validarEmail(String email) throws DadosException{
-		
+		if(email.indexOf('@') <= 0 )
+			throw new DadosException(new ErroDeDominio(10, "O email deve conter o @dominio!", Contato.class));
 	}
 }
 
