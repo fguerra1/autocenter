@@ -3,6 +3,10 @@ package modelo;
 import java.util.Set;
 import java.util.TreeSet;
 
+
+import modelo.DadosException;
+import modelo.ErroDeDominio;
+
 public class Funcionario extends Pessoa {
 
 	int matricula;
@@ -10,7 +14,7 @@ public class Funcionario extends Pessoa {
 	Set<Servico> nomeServico;
 	Set<OrdemDeServico> ordemDeServicos;
 
-	public Funcionario(String nome, String cpf, int matricula, String funcao) {
+	public Funcionario(String nome, String cpf, int matricula, String funcao)throws DadosException {
 		super(nome, cpf);
 		this.setMatricula(matricula);
 		this.setFuncao(funcao);
@@ -23,8 +27,9 @@ public class Funcionario extends Pessoa {
 		return matricula;
 	}
 
-	public void setMatricula(int matricula) {
-		// validarMatricula//colocar validar no SET (ver prjMVC)
+	public void setMatricula(int matricula) throws DadosException{
+		Funcionario.validarMatricula(matricula);
+	// validarMatricula//colocar validar no SET (ver prjMVC)
 		this.matricula = matricula;
 	}
 
@@ -32,7 +37,9 @@ public class Funcionario extends Pessoa {
 		return funcao;
 	}
 
-	public void setFuncao(String funcao) {
+	public void setFuncao(String funcao) throws DadosException{
+		Funcionario.validarFuncao(funcao);
+	
 		this.funcao = funcao;
 	}
 
@@ -71,6 +78,16 @@ public class Funcionario extends Pessoa {
 		return "Funcionario [matricula=" + matricula + ", funcao=" + funcao + "]";
 	}
 
+	public static void validarMatricula(int matricula) throws DadosException {
+		if(matricula == 0)
+			throw new DadosException(new ErroDeDominio(6, "A matrícula não pode ser nula!",Funcionario.class));	
+		
+	}
+	public static void validarFuncao(String funcao) throws DadosException {
+		if(funcao == null || funcao.length() == 0)
+			throw new DadosException(new ErroDeDominio(7, "A função não pode ser nula!",Funcionario.class));	
+	
+	
 	// public static void validar matricula(int matricula){
 	//
 	// }
@@ -81,4 +98,5 @@ public class Funcionario extends Pessoa {
 	// this.gerente = null;
 	// }
 
+}
 }
