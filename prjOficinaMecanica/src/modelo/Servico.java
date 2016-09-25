@@ -3,7 +3,7 @@ package modelo;
 import java.util.Date;
 import java.util.Set;
 import java.util.TreeSet;
-//        testando         
+         
 public class Servico {
 
 	float preco;
