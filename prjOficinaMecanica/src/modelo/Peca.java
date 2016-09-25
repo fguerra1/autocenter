@@ -3,13 +3,17 @@ package modelo;
 import java.util.Set;
 import java.util.TreeSet;
 
+import modelo.DadosException;
+import modelo.ErroDeDominio;
+//testando    //
+
 public class Peca {
 
 	String nome;
 	String descricao;
 	Set<Servico> servicos;
 
-	public Peca(String nome, String descricao) {
+	public Peca(String nome, String descricao) throws DadosException{
 		super();
 		this.setNome(nome);
 		this.setDescricao(descricao);
@@ -25,7 +29,8 @@ public class Peca {
 		return nome;
 	}
 
-	public void setNome(String nome) {
+	public void setNome(String nome) throws DadosException{
+		Peca.validarNome(nome);
 		this.nome = nome;
 	}
 
@@ -33,7 +38,8 @@ public class Peca {
 		return descricao;
 	}
 
-	public void setDescricao(String descricao) {
+	public void setDescricao(String descricao) throws DadosException {
+		Peca.validarDescricao(descricao);
 		this.descricao = descricao;
 	}
 
@@ -57,4 +63,14 @@ public class Peca {
 		return "Peca [nome=" + nome + ", descricao=" + descricao + ", servicos=" + servicos + "]";
 	}
 
-}
+	public static void validarNome (String nome) throws DadosException{
+		if(nome == null || nome.length() == 0)
+			throw new DadosException(new ErroDeDominio(1, "O nome não pode ser nulo!", Peca.class));	
+	}
+	public static void validarDescricao (String descricao) throws DadosException{
+		if(descricao == null || descricao.length() == 0)
+			throw new DadosException(new ErroDeDominio(2, "A descrição não pode ser nula!", Peca.class));	
+	}
+	
+	}
+
