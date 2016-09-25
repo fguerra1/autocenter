@@ -57,7 +57,7 @@ public class Contato {
 	public String toString() {
 		return "Contato [telefone=" + telefone + ", email=" + email + ", pessoa=" + pessoa + "]";
 	}
-<<<<<<< HEAD
+
 	
 	public static void validarTelefone(String telefone) throws DadosException {
 		if (telefone.length() < 8)
@@ -69,7 +69,5 @@ public class Contato {
 		
 	}
 }
-=======
 
-} 
->>>>>>> refs/remotes/origin/master
+
