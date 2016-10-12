@@ -3,9 +3,8 @@ package modelo;
 import java.util.Set;
 import java.util.TreeSet;
 
-import modelo.DadosException;
-import modelo.ErroDeDominio;
-//testando    //
+import dao.DadosException;
+import dao.ErroDeDominio;
 
 public class Peca {
 

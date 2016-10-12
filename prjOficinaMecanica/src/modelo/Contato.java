@@ -1,5 +1,8 @@
 package modelo;
 
+import dao.DadosException;
+import dao.ErroDeDominio;
+
 public class Contato {
 
 	String telefone;

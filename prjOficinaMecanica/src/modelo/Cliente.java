@@ -1,10 +1,16 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class Cliente extends Pessoa {
+import dao.IDados;
+import dao.IDadosParaTabela;
+
+public class Cliente extends Pessoa implements IDados, IDadosParaTabela, Comparable<Cliente>, Serializable{
 	
+	private String nome;
+	private String cpf;
 	Set<Veiculo> veiculos;
 	Set<OrdemDeServico> ordemServicos;
 
@@ -12,7 +18,13 @@ public class Cliente extends Pessoa {
 		super();
 		
 	}
+	
+	public static final int TAMANHO_CPF = 11;
+	public static final int TAMANHO_NOME = 40;
+	
 
+	
+	
 	public Cliente(String nome, String cpf) {
 		super(nome, cpf);
 		this.veiculos = new TreeSet<Veiculo>();
@@ -56,6 +68,24 @@ public class Cliente extends Pessoa {
 		this.ordemServicos.remove(oS);
 		oS.setCliente(null);
 
+	}
+	
+	
+	public String[] getCamposDeTabela() {
+		return new String[] {"Nome", "cpf","#OrdemServicos", "#Veiculos"};
+	}
+	
+	public Object getChave() {
+		return cpf;
+	}
+	
+	public Object[] getDadosParaTabela() {
+		return new Object[] { this.nome, this.cpf, this.ordemServicos.size(), this.veiculos.size() };
+	}
+
+	
+	public int compareTo(Cliente d) {
+		return this.nome.compareTo(d.nome);
 	}
 	
 	

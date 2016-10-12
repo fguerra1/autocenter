@@ -4,6 +4,9 @@ import java.util.Date;
 import java.util.Set;
 import java.util.TreeSet;
 
+import dao.DadosException;
+import dao.ErroDeDominio;
+
 public class OrdemDeServico {
 
 	Date dataDeServico;

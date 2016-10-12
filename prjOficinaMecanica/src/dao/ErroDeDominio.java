@@ -1,14 +1,14 @@
-package modelo;
+package dao;
 
 public class ErroDeDominio {
 	private int id;
 	private String mensagem;
 	private Class classedeOrigem;
 
-	public ErroDeDominio(int id, String mensagem, Class classedeOrigem) {
+	public ErroDeDominio(String mensagem) {
 		super();
-		this.id = id;
-		this.classedeOrigem = classedeOrigem;
+		//this.id = id;
+		//this.classedeOrigem = classedeOrigem;
 		this.mensagem = mensagem;
 	
 	}
