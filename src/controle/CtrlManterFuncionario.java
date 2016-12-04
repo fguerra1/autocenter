@@ -54,13 +54,9 @@ public class CtrlManterFuncionario  implements ICtrlCasoDeUso{
 	 */
 	private CtrlExcluirFuncionario ctrlExcluirFuncionario;
 
+	
 	/**
-	 * Referência para a janela do cadastro de Departamentos
-	 */
-//	private UICadastroDepartamentos uiCadastro;
-
-	/**
-	 * Referência para o objeto DaoDepartamento
+	 * Referência para o objeto DaoFuncionario
 	 */
 	private IDAO<Funcionario> dao = (IDAO<Funcionario>)DAO.getDAO(Funcionario.class);
 
