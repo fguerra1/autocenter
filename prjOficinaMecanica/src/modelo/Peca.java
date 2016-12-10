@@ -71,6 +71,11 @@ public class Peca {
 		if(descricao == null || descricao.length() == 0)
 			throw new DadosException(new ErroDeDominio(2, "A descrição não pode ser nula!", Peca.class));	
 	}
+
+		
+	public Set<Servico> listarServicos() throws DadosException {
+		return new TreeSet<Servico>(this.servicos);
+	}
 	
 	}
 

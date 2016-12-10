@@ -13,6 +13,12 @@ public class ErroDeDominio {
 	
 	}
 
+
+	public ErroDeDominio(String string) {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public int getId() {
 		return id;
 	}

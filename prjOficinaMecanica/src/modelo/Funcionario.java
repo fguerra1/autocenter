@@ -23,6 +23,11 @@ public class Funcionario extends Pessoa {
 		
 	}
 
+	public Funcionario(int matricula, String funcao) {
+		// TODO Auto-generated constructor stub
+		//coloquei para parar de dar erro no CtrlIncluirFuncionario no método incluir
+	}
+
 	public int getMatricula() {
 		return matricula;
 	}
